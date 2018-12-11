@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,8 @@ public class Display_Movie extends AppCompatActivity
 {
     DBHelp myDB;
     TextView textdisplay;
-    Button add_list, go_list, delete_list, rating;
+    Button add_list, go_list, delete_list, rating, setRating;
+    NumberPicker np;
 
 
     @Override
@@ -33,6 +35,11 @@ public class Display_Movie extends AppCompatActivity
         delete_list = findViewById(R.id.delete_list);
         go_list = findViewById(R.id.go_list);
         rating = findViewById(R.id.rating);
+        setRating = findViewById(R.id.submit_rate);
+        np = findViewById(R.id.numberpicker);
+
+        np.setMinValue(1);
+        np.setMaxValue(5);
 
         Cursor cursor = myDB.DisplayOne(intValue);
         displayRecordSet(cursor);
@@ -52,6 +59,8 @@ public class Display_Movie extends AppCompatActivity
 
         AddList();
         DeleteList();
+        Rating();
+        SetRating();
 
     }
 
@@ -75,13 +84,12 @@ public class Display_Movie extends AppCompatActivity
                 String age = cursor.getString(DBHelp.COL_AGE);
 
                 // Append data to the message:
-                message += "Id: " + id
-                        +"\nTitle: " + title
+                message += "Title: " + title
                         +"\nDescription: " + description
                         +"\nGenre: " + genre
                         +"\nCast: " + cast
                         +"\nLength: " + length
-                        +"\nAge: " + age
+                        +"\nAge Rating: " + age
                         +"\n\n";
             } while(cursor.moveToNext());
         }
@@ -166,4 +174,46 @@ public class Display_Movie extends AppCompatActivity
         );
 
     }
+
+    public void Rating()
+    {
+        rating.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        rating.setVisibility(rating.INVISIBLE);
+                        setRating.setVisibility(setRating.VISIBLE);
+                        np.setVisibility(np.VISIBLE);
+
+                    }
+                }
+
+        );
+    }
+
+    public void SetRating()
+    {
+        setRating.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        np.setVisibility(np.INVISIBLE);
+                        rating.setVisibility(rating.VISIBLE);
+                        setRating.setVisibility(setRating.INVISIBLE);
+
+                        Intent intent = getIntent();
+                        Integer intValue = intent.getIntExtra("movie_id", 0);
+                        boolean Rating = myDB.RateMovie(np.getValue(), intValue);
+                        if(Rating)
+                            Toast.makeText(Display_Movie.this,"Rated " + np.getValue() + " Star(s)",Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(Display_Movie.this,"Not Rated",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+        );
+    }
+
 }

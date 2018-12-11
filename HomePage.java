@@ -25,8 +25,8 @@ public class HomePage extends AppCompatActivity {
         {
             case R.id.image_goodfellas:{
                 text = "Goodfellas";
-                Intent intent = new Intent(this, MovieInfo.class);
-                //intent.putExtra("movie_id", 1);
+                Intent intent = new Intent(this, Display_Movie.class);
+                intent.putExtra("movie_id", 1);
 
                 startActivity(intent);
                 break;

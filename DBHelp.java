@@ -175,4 +175,19 @@ public class DBHelp extends SQLiteOpenHelper
 
     }
 
+    public boolean RateMovie(int rate, int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RATING, rate );
+        String where = ROWID + "=" + id;
+
+        long result = db.update(TABLE_NAME, contentValues, where, null);
+
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
 }

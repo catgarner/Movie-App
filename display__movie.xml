@@ -11,30 +11,56 @@
         android:layout_height="wrap_content"
         android:text="TextView" />
 
-    <Button
-        android:id="@+id/add_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add to my favourites" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/add_list"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Add to My Favs" />
+
+        <Button
+            android:id="@+id/delete_list"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Delete from My Favs" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/go_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="Go to my favourties" />
+        android:text="Go to my Favourites" />
 
-    <Button
-        android:id="@+id/rating"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rate Movie" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/delete_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete from my Favourites" />
+        <Button
+            android:id="@+id/rating"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Rate Movie" />
+
+        <Button
+            android:id="@+id/submit_rate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Submit Rate"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <NumberPicker
+        android:id="@+id/numberpicker"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="invisible"/>
 
 
 

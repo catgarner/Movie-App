@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class MovieInfo extends AppCompatActivity
         display = (Button)findViewById(R.id.Display);
         delete = (Button)findViewById(R.id.Delete);
         textdisplay = (TextView)findViewById(R.id.Text_Display);
+
 
         AddData();
         DisplayAll();
