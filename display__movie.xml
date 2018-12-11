@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/Text_Display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/add_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add to my favourites" />
+
+    <Button
+        android:id="@+id/go_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Go to my favourties" />
+
+    <Button
+        android:id="@+id/rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate Movie" />
+
+    <Button
+        android:id="@+id/delete_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete from my Favourites" />
+
+
+
+
+</LinearLayout>

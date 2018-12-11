@@ -1,16 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/backgroundcolor"
+    tools:context=".HomePage">
 
-    <ImageButton
-        android:id="@+id/image_grinch"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="onClick"
-        app:srcCompat="@drawable/grinch" />
-</LinearLayout>
+        android:layout_height="0dp"
+        android:backgroundTint="@color/backgroundcolor"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/backgroundcolor">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroundcolor"
+                android:backgroundTint="@color/backgroundcolor"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Tilte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Click a movie to see more!"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/image_goodfellas"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/goodfellas" />
+
+                <ImageButton
+                    android:id="@+id/image_halloween"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/halloween" />
+
+                <ImageButton
+                    android:id="@+id/image_interstella"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/interstella" />
+
+                <ImageButton
+                    android:id="@+id/image_fockers"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/fockers" />
+
+                <ImageButton
+                    android:id="@+id/image_shutter"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/shutter" />
+
+                <ImageButton
+                    android:id="@+id/image_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/green" />
+
+                <ImageButton
+                    android:id="@+id/image_hangover"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/hangover" />
+
+                <ImageButton
+                    android:id="@+id/image_incredibles"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/incredibles" />
+
+                <ImageButton
+                    android:id="@+id/image_prestige"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/prestige" />
+
+                <ImageButton
+                    android:id="@+id/image_grinch"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/grinch" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
