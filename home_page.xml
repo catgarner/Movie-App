@@ -127,6 +127,7 @@
                     android:onClick="onClick"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/grinch" />
+
             </LinearLayout>
         </ScrollView>
 

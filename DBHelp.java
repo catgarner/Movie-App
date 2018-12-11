@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelp extends SQLiteOpenHelper
 {
+    //These set variables for the names and column id of each variable in the table.
+    //They can then be used for inputting and displaying the data
     public static final String ROWID = "ID";
     public static final int COL_ROWID = 0;
 
@@ -36,8 +38,10 @@ public class DBHelp extends SQLiteOpenHelper
     public static final String RATING = "RATING";
     public static final int COL_RATING = 8;
 
+    //A String array containing all of the rows in the table
     public static final String[] ALL_ROWS = new String[] {ROWID, TITLE, DESCRIPTION, GENRE, PEOPLE, LENGTH, AGE, LIST, RATING};
 
+    //These declare the database name and table name for the on create purposes.
     public static final String DATABASE_NAME = "MOVIES";
     public static final String TABLE_NAME = "MOVIE_INFO";
 
@@ -50,7 +54,9 @@ public class DBHelp extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        //Creates the tables in the database
         db.execSQL("CREATE TABLE " + TABLE_NAME + "( ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, DESCRIPTION TEXT, GENRE TEXT, PEOPLE TEXT, LENGTH TEXT, AGE TEXT, LIST INTEGER, RATING INTEGER)");
+        //Calls a function to populate the table
         PopulateData();
 
     }
@@ -62,38 +68,13 @@ public class DBHelp extends SQLiteOpenHelper
         onCreate(db);
     }
 
-    public boolean insertDB(String title, String description, String director, String people)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(TITLE, title);
-        contentValues.put(DESCRIPTION, description);
-
-        long result = db.insert(TABLE_NAME, null, contentValues);
-        if(result == -1)
-            return false;
-        else
-            return true;
-    }
-
-    public Cursor DisplayAll()
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String where = null;
-        Cursor c = 	db.query(true, TABLE_NAME, ALL_ROWS,
-                where, null, null, null, null, null);
-        if (c != null) {
-            c.moveToFirst();
-        }
-        return c;
-
-    }
-
-   public Cursor DisplayList(long list)
+    //This is a function that selects data from the database where the list variable is equal to the variable it is getting in.
+    public Cursor DisplayList(long list)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + LIST + " = " + list ;
         Cursor  cursor = db.rawQuery(query,null);
+        //If the query works it will return a cursor with the data in it.
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -101,6 +82,7 @@ public class DBHelp extends SQLiteOpenHelper
 
     }
 
+    //This function drops the table if it exists and then calls the onCreate function
     public void DeleteAll()
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -108,6 +90,7 @@ public class DBHelp extends SQLiteOpenHelper
         onCreate(db);
     }
 
+    //A function that when called inserts data into the table
     public void PopulateData()
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -125,6 +108,7 @@ public class DBHelp extends SQLiteOpenHelper
 
     }
 
+    //This function selects information from the database where the rowid is equal to the id it is given
     public Cursor DisplayOne(long id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -137,6 +121,7 @@ public class DBHelp extends SQLiteOpenHelper
         return c;
     }
 
+    //This function updates the table to add a 1 into the list variable where the rowid is equal to the one its given
     public boolean updateList(int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -151,6 +136,7 @@ public class DBHelp extends SQLiteOpenHelper
             return true;
     }
 
+    //This function will update the list variable to a 0 where the rowid is equal to the one its given
     public boolean DeleteList(int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -165,6 +151,8 @@ public class DBHelp extends SQLiteOpenHelper
             return true;
     }
 
+    //This function checks if there exists a row in the table with the rowid that its given and the list variable set as 1
+    //It the counts the amount of rows returned and returns it.
     public int CheckForList(int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -175,6 +163,7 @@ public class DBHelp extends SQLiteOpenHelper
 
     }
 
+    //This function updates the table with the rate entered by the user for the rowid that it is given
     public boolean RateMovie(int rate, int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();

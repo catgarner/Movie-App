@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class MovieInfo extends AppCompatActivity
 {
+    /*
     DBHelp myDB;
     EditText texttitle, textdescription, textpeople, textdirector;
     TextView textdisplay;
@@ -51,7 +52,7 @@ public class MovieInfo extends AppCompatActivity
                     public void onClick(View v)
                     {
 
-                        boolean isInserted = myDB.insertDB(texttitle.getText().toString(), textdescription.getText().toString(), textpeople.getText().toString(), textdirector.getText().toString());
+                        boolean isInserted = myDB.insertDB(texttitle.getText().toInt(), textdescription.getText().toString(), textpeople.getText().toString(), textdirector.getText().toString());
                         if(isInserted == true)
                             Toast.makeText(MovieInfo.this,"Data Inserted",Toast.LENGTH_LONG).show();
                         else
@@ -139,5 +140,5 @@ public class MovieInfo extends AppCompatActivity
                 }
         );
 
-    }
+    }*/
 }

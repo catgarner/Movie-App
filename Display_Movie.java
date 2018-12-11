@@ -1,9 +1,7 @@
 package com.example.c1637.movie_assignment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +13,7 @@ import android.widget.Toast;
 
 public class Display_Movie extends AppCompatActivity
 {
+    //Setting variables for the items used on the xml and the database helper class
     DBHelp myDB;
     TextView textdisplay;
     Button add_list, go_list, delete_list, rating, setRating;
@@ -26,6 +25,7 @@ public class Display_Movie extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display__movie);
 
+        //This gets the movie id that was sent from the home page in the intent and stores it in a variable
         Intent intent = getIntent();
         int intValue = intent.getIntExtra("movie_id", 0);
 
@@ -38,14 +38,22 @@ public class Display_Movie extends AppCompatActivity
         setRating = findViewById(R.id.submit_rate);
         np = findViewById(R.id.numberpicker);
 
+        //This sets the min and max values for the number picker for rating the movie
         np.setMinValue(1);
         np.setMaxValue(5);
 
+        //This calls the function to display the information about the movie that was clicked
+        //It sends the value that was taken in from the intent so that the function knows which movie information to display
         Cursor cursor = myDB.DisplayOne(intValue);
-        displayRecordSet(cursor);
+        //This then send the information that is returned to the variable.
+        displayData(cursor);
 
+        //This runs the function and sends the rowid variable taken in form the intent to the function.
+        //It the stores what gets returned in a variable
         int check = myDB.CheckForList(intValue);
 
+        //If no rows are returned then the add to favs button becomes visible and the delete button turn invisible
+        //But if rows are returned the buttons are made the opposite visibility
         if(check == 0) {
             add_list.setVisibility(add_list.VISIBLE);
             delete_list.setVisibility(delete_list.INVISIBLE);
@@ -57,6 +65,7 @@ public class Display_Movie extends AppCompatActivity
         }
 
 
+        //These run the methods to add the on clicks to the buttons
         AddList();
         DeleteList();
         Rating();
@@ -69,7 +78,7 @@ public class Display_Movie extends AppCompatActivity
         textdisplay.setText(message);
     }
 
-    private void displayRecordSet(Cursor cursor) {
+    private void displayData(Cursor cursor) {
         String message = "";
 
         // Reset cursor to start, checking to see if there's data:
